@@ -2,26 +2,23 @@ import React, { useEffect } from 'react';
 import "./App.css";
 import SearchIcon from './search.svg';
 
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Host': 'imdb-data-searching.p.rapidapi.com',
-		'X-RapidAPI-Key': 'c2791b8444msh467504530d45f34p10db09jsn1f6ecc734be5'
-	}
-};
+const API_URL = 'http://www.omdbapi.com/?apikey=cecaf37d'
 
-const API_URL = fetch('https://imdb-data-searching.p.rapidapi.com/om?t=batman', options)
-                    .then(response => response.json())
-                    .then(response => console.log(response))
-                    .catch(err => console.error(err));
+const movie1 = {
+    "Title": "Amazing Spiderman Syndrome",
+    "Year": "2012",
+    "imdbID": "tt2586634",
+    "Type": "movie",
+    "Poster": "N/A"
+};
 
 const App = () => {
 
     const searchMovies = async (title) => {
         const response = await fetch(`${API_URL}&s=${title}`);
-        // const data = await response.json();
+        const data = await response.json();
 
-        // console.log(data.Search);
+        console.log(data.Search);
     }
 
     useEffect(() => {
